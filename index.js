@@ -36,7 +36,7 @@ app.post('/show', (req, res) => {
 			   'url':'https://matermost-bot.herokuapp.com/process',
 			   'dialog':{
 				  'callback_id':'somecallbackid',
-				  'title':'Technical Dept',
+				  'title':'Technical Depts',
 				  'icon_url':'http://www.mattermost.org/wp-content/uploads/2016/04/icon.png',
 				  'elements':[
 					 {
@@ -45,7 +45,7 @@ app.post('/show', (req, res) => {
 						'type':'text',
 						'subtype':'',
 						'default': user_name,
-						'optional':false,
+						'optional':true,
 						'min_length':0,
 						'max_length':0,
 						'data_source':'',
@@ -53,7 +53,7 @@ app.post('/show', (req, res) => {
 					 },
 					 {
 						'display_name':'Email',
-						'name':'emai;',
+						'name':'email;',
 						'type':'text',
 						'subtype':'email',
 						'default':'',
@@ -85,7 +85,7 @@ app.post('/show', (req, res) => {
 						'default':'',
 						'placeholder':'placeholder',
 						'help_text':'',
-						'optional':true,
+						'optional':false,
 						'min_length':5,
 						'max_length':1000,
 						'data_source':'',
