@@ -14,9 +14,14 @@ app.listen(process.env.PORT || port, () =>  {
 });
 
 app.get('/', (req, res) => {
-	console.log(req);    
+	console.log(req.query);    
     res.send('Welcome')
 });
+
+app.post('/process', (req, res) => {
+	console.log(req.body);  
+	res.send('done')
+}
 
 app.post('/show', (req, res) => {
 	console.log(req.body);  
@@ -27,10 +32,10 @@ app.post('/show', (req, res) => {
 		'url' : 'http://adea2b8a.ngrok.io/api/v4/actions/dialogs/open', 
 		'body': JSON.stringify({
 			'trigger_id':trigger_id,
-			   'url':'http://localhost:5000/dialog_submit',
+			   'url':'https://matermost-bot.herokuapp.com/process',
 			   'dialog':{
 				  'callback_id':'somecallbackid',
-				  'title':'Test Title',
+				  'title':'To Vinoth',
 				  'icon_url':'http://www.mattermost.org/wp-content/uploads/2016/04/icon.png',
 				  'elements':[
 					 {
