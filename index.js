@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 app.post('/process', (req, res) => {
 	console.log(req.body);  
 	res.send('done')
-}
+});
 
 app.post('/show', (req, res) => {
 	console.log(req.body);  
