@@ -14,11 +14,11 @@ app.listen(process.env.PORT || port, () =>  {
 });
 
 app.get('/', (req, res) => {
-	console.log(req);    
+	console.log(req.query);    
     res.send('Welcome')
 });
 
 app.post('/show', (req, res) => {
-	console.log(req);    
+	console.log(req.body);    
     res.send('Welcome')
 });
