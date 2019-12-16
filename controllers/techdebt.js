@@ -19,9 +19,9 @@ exports.create = function (req, res) {
 	
 	var techdeptdata = new TechDebt (
 		{
-			username: body.user_id,
-			project: body.submission.project,
-			details: body.submission.details
+			username: req.body.user_id,
+			project: req.body.submission.project,
+			details: req.body.submission.details
 		}
 	);
 	
