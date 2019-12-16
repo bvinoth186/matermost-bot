@@ -69,7 +69,7 @@ function showDialogInMM(req, res) {
 					 },
 					 {
 						'display_name':'Technical Depts',
-						'name':'techDebts',
+						'name':'details',
 						'type':'textarea',
 						'subtype':'',
 						'default':'',
@@ -98,28 +98,24 @@ function showDialogInMM(req, res) {
 }
 
 function saveData(body) {
-	var techdept = new TechDept (
+	var techdeptdata = new TechDept (
 		{
 			username: body.user_id,
 			project: body.submission.project,
-			details: 'details'
+			details: body.submission.details
 		}
 	);
 	
-	console.log('techdept ' + techdept);
-	try {
-	techdept.save(function (err) {
-		console.log(err);
+	console.log('techdept ' + techdeptdata);
+	techdeptdata.save(function (err, techdept) {
+		console.log('inserting');
         if (err) {
 			console.log(err);
             return next(err);
         }
         console.log('TechDept Created successfully')
     });
-	} catch(e) {
-		  console.log(e);
-	}
-	console.log('Try')
+	console.log('saveData done')
 }
 
 app.post('/show', (req, res) => {
