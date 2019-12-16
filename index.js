@@ -105,9 +105,7 @@ app.post('/show', (req, res) => {
 		if(error) {
 			res.send(error)
 		}
-		var jsonContent = JSON.parse(body);
-		
-		console.log(jsonContent);
+		console.log(body);
 		res.send('Done')
 	});
     
