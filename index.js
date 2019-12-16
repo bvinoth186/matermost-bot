@@ -5,15 +5,16 @@ const app = express();
 const port = 8080; 
 
 // Set up mongoose connection
-var mongoose = require('mongoose');
+/**var mongoose = require('mongoose');
 var dev_db_url = process.env.mongo_url;
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+*/
 
-var TechDept = require('/techdept');
+var TechDept = require('./techdebt');
 
 
 require('dotenv').config();
