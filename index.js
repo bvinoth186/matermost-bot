@@ -33,7 +33,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/process', (req, res) => {
-	console.log(req.body);  
+	console.log(req.body); 
+	saveData(req.body);
 	res.send('done')
 });
 
@@ -92,16 +93,15 @@ function showDialogInMM(req, res) {
 			res.send(error)
 		}
 		console.log(body);
-		saveData(body, user_name);
 		res.send('Done')
 	});
 }
 
-function saveData(body, user_name) {
+function saveData(body) {
 	var techdept = new TechDept (
 		{
-			username: user_name,
-			project: 'TUCI',
+			username: body.user_id,
+			project: body.submission.project,
 			details: 'details'
 		}
 	);
