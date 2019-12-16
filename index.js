@@ -106,7 +106,7 @@ function saveData(body, user_name) {
 		}
 	);
 	
-	console('techdept ' + techdept);
+	console.log('techdept ' + techdept);
 	techdept.save(function (err) {
 		console.log(err);
         if (err) {
