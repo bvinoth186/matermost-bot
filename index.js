@@ -24,9 +24,8 @@ app.post('/process', (req, res) => {
 	res.send('done')
 });
 
-app.post('/show', (req, res) => {
-	console.log(req.body);  
-    let trigger_id = req.body.trigger_id;
+function showDialogInMM(req, res) {
+	let trigger_id = req.body.trigger_id;
 	let user_name = req.body.user_name;
 	let mm_server_url = process.env.mm_server_url
 	let mm_app_url = process.env.mm_app_url
@@ -42,32 +41,6 @@ app.post('/show', (req, res) => {
 				  'title':'Technical Depts',
 				  'icon_url':'http://www.mattermost.org/wp-content/uploads/2016/04/icon.png',
 				  'elements':[
-					 {
-						'display_name':'User Name',
-						'name':'username',
-						'type':'text',
-						'subtype':'',
-						'default': user_name,
-						'optional':true,
-						'min_length':0,
-						'max_length':0,
-						'data_source':'',
-						'options':null
-					 },
-					 {
-						'display_name':'Email',
-						'name':'email;',
-						'type':'text',
-						'subtype':'email',
-						'default':'',
-						'placeholder':'admin@transunion.com',
-						'help_text':'Input your TransUnion email address.',
-						'optional':true,
-						'min_length':0,
-						'max_length':0,
-						'data_source':'',
-						'options':null
-					 },
 					 {
 						'display_name':'Project',
 						'name':'project',
@@ -108,5 +81,10 @@ app.post('/show', (req, res) => {
 		console.log(body);
 		res.send('Done')
 	});
+}
+
+app.post('/show', (req, res) => {
+	console.log(req.body);  
+    showDialogInMM(req, res);
     
 });
