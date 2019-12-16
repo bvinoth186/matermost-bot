@@ -13,6 +13,9 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+var TechDept = require('techdept');
+
+
 require('dotenv').config();
 
 app.use(bodyParser.json()); 
@@ -88,8 +91,27 @@ function showDialogInMM(req, res) {
 			res.send(error)
 		}
 		console.log(body);
+		saveData(body, user_name);
 		res.send('Done')
 	});
+}
+
+function saveData(body, user_name) {
+	var techdept = new TechDept (
+		{
+			username: user_name,
+			project: 'TUCI',
+			details: 'details'
+		}
+	);
+	
+	 techdept.save(function (err) {
+        if (err) {
+			console.log(err);
+            return next(err);
+        }
+        console.log('TechDept Created successfully')
+    })
 }
 
 app.post('/show', (req, res) => {
