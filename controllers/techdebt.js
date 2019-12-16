@@ -4,7 +4,7 @@ const request = require('request');
 
 //Simple version, without validation or sanitation
 exports.ping = function (req, res) {
-    res.send('Ping Success!');
+    res.send('Ping Success! ' + new Date());
 };
 
 
@@ -19,9 +19,10 @@ exports.create = function (req, res) {
 	
 	var techdeptdata = new TechDebt (
 		{
-			username: req.body.user_id,
+			username: req.body.submission.username,
 			project: req.body.submission.project,
-			details: req.body.submission.details
+			details: req.body.submission.details,
+			time: new Date()
 		}
 	);
 	
@@ -56,6 +57,18 @@ function showDialogInMM(req, res) {
 				  'title':'Technical Depts',
 				  'icon_url':'http://www.mattermost.org/wp-content/uploads/2016/04/icon.png',
 				  'elements':[
+					 {
+						'display_name':'User Name',
+						'name':'username',
+						'type':'text',
+						'subtype':'',
+						'default': user_name,
+						'optional':false,
+						'min_length':0,
+						'max_length':0,
+						'data_source':'',
+						'options':null
+					 },
 					 {
 						'display_name':'Project',
 						'name':'project',
