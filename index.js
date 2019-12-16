@@ -14,7 +14,8 @@ app.listen(process.env.PORT || port, () =>  {
 });
 
 app.get('/', (req, res) => {
-	console.log(req.query);    
+	console.log(req.query);   
+	console.log(process.env.PATH);
     res.send('Welcome')
 });
 
@@ -27,13 +28,15 @@ app.post('/show', (req, res) => {
 	console.log(req.body);  
     let trigger_id = req.body.trigger_id;
 	let user_name = req.body.user_name;
+	let mm_server_url = process.env.mm_server_url
+	let mm_app_url = process.env.mm_app_url
 	
 	request.post({
 		'headers': { 'content-type': 'application/json' },
-		'url' : 'http://adea2b8a.ngrok.io/api/v4/actions/dialogs/open', 
+		'url' : mm_server_url, 
 		'body': JSON.stringify({
 			'trigger_id':trigger_id,
-			   'url':'https://matermost-bot.herokuapp.com/process',
+			   'url': mm_app_url,
 			   'dialog':{
 				  'callback_id':'somecallbackid',
 				  'title':'Technical Depts',
