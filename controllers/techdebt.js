@@ -17,7 +17,7 @@ exports.show = function (req, res) {
 exports.create = function (req, res) {
 	console.log(req.body); 
 	
-	var techdeptdata = new TechDept (
+	var techdeptdata = new TechDebt (
 		{
 			username: body.user_id,
 			project: body.submission.project,
