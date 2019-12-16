@@ -106,7 +106,9 @@ function saveData(body, user_name) {
 		}
 	);
 	
-	 techdept.save(function (err) {
+	console('techdept ' + techdept);
+	techdept.save(function (err) {
+		console.log(err);
         if (err) {
 			console.log(err);
             return next(err);
