@@ -107,6 +107,7 @@ function saveData(body) {
 	);
 	
 	console.log('techdept ' + techdept);
+	try {
 	techdept.save(function (err) {
 		console.log(err);
         if (err) {
@@ -114,7 +115,11 @@ function saveData(body) {
             return next(err);
         }
         console.log('TechDept Created successfully')
-    })
+    });
+	} catch(e) {
+		  console.log(e);
+	}
+	console.log('Try')
 }
 
 app.post('/show', (req, res) => {
