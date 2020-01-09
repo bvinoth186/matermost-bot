@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var TechDeptSchema = new Schema({
+var TechDebtSchema = new Schema({
     username: {type: String, required: true, max: 100},
     project: {type: String, required: true, max: 100},
 	details: {type: String, required: true, max: 100},
@@ -10,4 +10,4 @@ var TechDeptSchema = new Schema({
 
 
 // Export the model
-module.exports = mongoose.model('TechDept', TechDeptSchema);
+module.exports = mongoose.model('TechDebt', TechDebtSchema);

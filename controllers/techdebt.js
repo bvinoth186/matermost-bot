@@ -17,7 +17,7 @@ exports.show = function (req, res) {
 exports.create = function (req, res) {
 	console.log(req.body); 
 	
-	var techdeptdata = new TechDebt (
+	var techdebtdata = new TechDebt (
 		{
 			username: req.body.submission.username,
 			project: req.body.submission.project,
@@ -26,18 +26,18 @@ exports.create = function (req, res) {
 		}
 	);
 	
-	console.log('techdept ' + techdeptdata);
-	techdeptdata.save(function (err, techdept) {
+	console.log('techdebt ' + techdebtdata);
+	techdebtdata.save(function (err, techdebt) {
 		console.log('inserting');
         if (err) {
 			console.log(err);
             return next(err);
         }
-        console.log('TechDept Created successfully')
+        console.log('Techdebt Created successfully')
     });
 	console.log('saveData done')
 	
-	res.send('TechDept Created successfully')
+	res.send('Techdebt Created successfully')
 };
 
 function showDialogInMM(req, res) {
@@ -54,7 +54,7 @@ function showDialogInMM(req, res) {
 			   'url': mm_app_url,
 			   'dialog':{
 				  'callback_id':'somecallbackid',
-				  'title':'Technical Depts',
+				  'title':'Technical Debts',
 				  'icon_url':'http://www.mattermost.org/wp-content/uploads/2016/04/icon.png',
 				  'elements':[
 					 {
@@ -74,7 +74,7 @@ function showDialogInMM(req, res) {
 						'name':'project',
 						'type':'text',
 						'subtype':'',
-						'default': 'TUCI',
+						'default': '',
 						'optional':false,
 						'min_length':0,
 						'max_length':0,
@@ -82,12 +82,12 @@ function showDialogInMM(req, res) {
 						'options':null
 					 },
 					 {
-						'display_name':'Technical Depts',
+						'display_name':'Technical Debts',
 						'name':'details',
 						'type':'textarea',
 						'subtype':'',
 						'default':'',
-						'placeholder':'placeholder',
+						'placeholder':'Input the Technical Debts in here',
 						'help_text':'',
 						'optional':false,
 						'min_length':5,
